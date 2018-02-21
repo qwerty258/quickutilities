@@ -1,0 +1,5 @@
+#!/bin/bash
+for i in *.rar
+do
+    unrar t "$i"
+done

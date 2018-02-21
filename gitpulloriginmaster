@@ -1,0 +1,11 @@
+#!/bin/bash
+for d in $(ls)
+do
+    echo "$d"
+    if [ -d "$d/.git" ]
+    then
+        cd $d
+        git pull origin master
+        cd -
+    fi
+done

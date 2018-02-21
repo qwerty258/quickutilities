@@ -1,0 +1,5 @@
+#!/bin/bash
+for i in *.7z
+do
+    7z t "$i"
+done

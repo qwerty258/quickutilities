@@ -1,0 +1,5 @@
+#!/bin/bash
+for i in *.tar.xz
+do
+    xz -vt "$i"
+done
