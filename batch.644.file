@@ -1,0 +1,3 @@
+#!/bin/bash
+#!/bin/bash
+find . -type f \( -exec chmod -v 644 {} \; \)
