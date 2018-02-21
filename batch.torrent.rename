@@ -1,0 +1,6 @@
+#!/bin/bash
+for i in *.torrent
+do
+    renamet.py "$i"
+done
+
