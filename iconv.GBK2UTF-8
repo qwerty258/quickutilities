@@ -1,0 +1,2 @@
+#!/bin/bash
+iconv -f GBK -t UTF-8 $1 -o "$1.ret"
