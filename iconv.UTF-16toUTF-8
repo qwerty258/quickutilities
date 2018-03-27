@@ -1,2 +1,3 @@
 #!/bin/bash
-iconv -f UTF-16 -t UTF-8 $1 -o "$1.ret"
+iconv -f UTF-16 -t UTF-8 "$1" -o TempFileHopeNoDup
+mv TempFileHopeNoDup "$1"
