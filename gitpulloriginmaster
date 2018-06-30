@@ -1,11 +1,13 @@
 #!/bin/bash
 for d in $(ls)
 do
-    echo "$d"
     if [ -d "$d/.git" ]
     then
+        echo "$(pwd)/$d"
         cd $d
-        git pull origin master
+        git fetch --prune
+        git pull
         cd -
+        echo
     fi
 done
