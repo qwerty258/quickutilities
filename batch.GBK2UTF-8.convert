@@ -1,0 +1,5 @@
+#!/bin/bash
+for i in *.txt
+do
+    iconv.GBK2UTF-8 "$i"
+done
