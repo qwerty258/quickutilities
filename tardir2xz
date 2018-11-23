@@ -1,2 +1,2 @@
 #!/bin/bash
-tar -cJf "$1.tar.xz" "$1"
+tar -cf - "$1" | xz -e --threads=8 -c - > "$1.tar.xz"
