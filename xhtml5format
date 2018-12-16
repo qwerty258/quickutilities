@@ -1,0 +1,5 @@
+#!/bin/bash
+create_time="$(stat -c %y "$1")"
+tidy -asxml "$1" > "$1.xhtml5temp"
+mv "$1.xhtml5temp" "$1"
+touch -d "$create_time" "$1"
