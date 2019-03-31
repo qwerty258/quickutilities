@@ -1,0 +1,6 @@
+#!/bin/bash
+#echo $1
+filename=$(basename -- "$1")
+extension="${filename##*.}"
+sha1ret=$(sha1sum $1 | awk '{print $1}')
+mv -v $1 "$sha1ret.$extension"
