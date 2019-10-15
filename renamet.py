@@ -1,4 +1,5 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 
 # Copyright (C) 2018-2019  yaofei zheng
 #
@@ -17,18 +18,19 @@
 
 import os
 import sys
-import warnings
-warnings.filterwarnings("ignore")
 import libtorrent as lt
 
+
 def main():
-    nametorrent=lt.torrent_info(lt.bdecode(open(sys.argv[1], 'rb').read())).name()+".torrent"
+    nametorrent = lt.torrent_info(lt.bdecode(
+        open(sys.argv[1], 'rb').read())).name()+".torrent"
     if os.access(nametorrent, os.W_OK):
         print("file name exists: {}".format(nametorrent))
     else:
-        tip="renaming '{}' to '{}'".format(sys.argv[1], nametorrent)
+        tip = "renaming '{}' to '{}'".format(sys.argv[1], nametorrent)
         print(tip)
         os.rename(sys.argv[1], nametorrent)
+
 
 if __name__ == "__main__":
     main()

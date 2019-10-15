@@ -1,4 +1,5 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 
 # Copyright (C) 2018-2019  yaofei zheng
 #
@@ -18,6 +19,7 @@
 import isbnlib
 import sys
 
+
 def main():
     isbn13 = " "
     bprint = False
@@ -29,12 +31,11 @@ def main():
         bprint = True
 
     if bprint:
-        print("{}".format(isbn13))
-        print("{}".format(isbnlib.info(isbn13)))
+        print(isbn13)
+        print(isbnlib.info(isbn13))
     else:
         print("invalid ISBN")
-        
+
 
 if __name__ == "__main__":
     main()
-
