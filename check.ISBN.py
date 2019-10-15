@@ -23,11 +23,7 @@ import os
 
 def main():
     for file in os.listdir():
-        isbnstr = file[0:13]
-        #print(isbnstr)
-        #print(file[0])
-        #print(file[1])
-        if isbnlib.is_isbn13(isbnstr):
+        if isbnlib.is_isbn13(file[0:13]):
             print("{} {}".format("ISBN      OK:", file))
         else:
             print("{} {}".format("ISBN Invalid:", file))
