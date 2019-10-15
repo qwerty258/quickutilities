@@ -22,11 +22,21 @@ import os
 
 
 def main():
+    HEADER___ = '\033[95m'
+    OKBLUE___ = '\033[94m'
+    OKGREEN__ = '\033[92m'
+    WARNING__ = '\033[93m'
+    FAIL_____ = '\033[91m'
+    ENDC_____ = '\033[0m'
+    BOLD_____ = '\033[1m'
+    UNDERLINE = '\033[4m'
     for file in os.listdir():
-        if isbnlib.is_isbn13(file[0:13]):
-            print("{} {}".format("ISBN      OK:", file))
-        else:
-            print("{} {}".format("ISBN Invalid:", file))
+            if isbnlib.is_isbn13(file[0:13]):
+                print("{}{}{} {}".format(
+                    OKGREEN__, "ISBN      OK:", ENDC_____, file))
+            else:
+                print("{}{}{} {}".format(
+                    FAIL_____, "ISBN Invalid:", ENDC_____, file))
 
 
 if __name__ == "__main__":
