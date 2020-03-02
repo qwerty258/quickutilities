@@ -31,12 +31,20 @@ def main():
     BOLD_____ = '\033[1m'
     UNDERLINE = '\033[4m'
     for file in os.listdir():
-            if isbnlib.is_isbn13(file[0:13]):
-                print("{}{}{} {}".format(
-                    OKGREEN__, "ISBN      OK:", ENDC_____, file))
-            else:
-                print("{}{}{} {}".format(
-                    FAIL_____, "ISBN Invalid:", ENDC_____, file))
+        str13 = file[0:13]
+        str10 = file[0:10]
+        if isbnlib.is_isbn13(str13):
+            print("{}{}{} {}".format(
+                OKGREEN__, "ISBN      OK:", ENDC_____, file))
+        elif isbnlib.is_isbn10(str10):
+            str13 = isbnlib.to_isbn13(str10)
+            newfilename = str13 + file[10:]
+            os.rename(file, newfilename)
+            print("{}{}{} {}".format(
+                OKGREEN__, "ISBN      OK:", ENDC_____, newfilename))
+        else:
+            print("{}{}{} {}".format(
+                FAIL_____, "ISBN Invalid:", ENDC_____, file))
 
 
 if __name__ == "__main__":
