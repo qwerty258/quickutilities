@@ -21,7 +21,7 @@ do
     then
         echo "$(pwd)/$d"
         cd $d
-        git fetch --prune
+        git fetch -pP
         git pull
         cd -
         echo
