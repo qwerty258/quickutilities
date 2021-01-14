@@ -2,7 +2,10 @@
 
 echo $1
 
-tar -cJf "$1.tar.xz" *.eml
-gio trash *.eml
-tar -tvf "$1.tar.xz" | wc -l
+if [ 1 == $# ]
+then
+    tar -cJf "$1.tar.xz" *.eml
+    gio trash *.eml
+    tar -tvf "$1.tar.xz" | wc -l
+fi
 
