@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2018-2019  yaofei zheng
+# Copyright (C) 2018-2022  yaofei zheng
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -25,7 +25,7 @@ def main():
     nametorrent = lt.torrent_info(lt.bdecode(
         open(sys.argv[1], 'rb').read())).name()+".torrent"
     if os.access(nametorrent, os.W_OK):
-        print("file name exists: {}".format(nametorrent))
+        print("ERROR: renaming {} file name exists: {}".format(sys.argv[1], nametorrent))
     else:
         tip = "renaming '{}' to '{}'".format(sys.argv[1], nametorrent)
         print(tip)
