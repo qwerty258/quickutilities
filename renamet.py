@@ -25,7 +25,7 @@ def main():
     nametorrent = lt.torrent_info(lt.bdecode(
         open(sys.argv[1], 'rb').read())).name()+".torrent"
     if os.access(nametorrent, os.W_OK):
-        print("ERROR: renaming {} file name exists: {}".format(sys.argv[1], nametorrent))
+        print("ERROR:\n{}\nfile name exists:\n{}".format(sys.argv[1], nametorrent))
     else:
         tip = "renaming '{}' to '{}'".format(sys.argv[1], nametorrent)
         print(tip)
