@@ -17,6 +17,6 @@
 
 for i in *.md
 do
-    md2docx "$i"
+    md2docx.sh "$i"
 done
 
