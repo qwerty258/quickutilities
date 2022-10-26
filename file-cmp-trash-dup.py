@@ -20,42 +20,49 @@
 import sys
 import os
 import hashlib
-import csv
 import send2trash
 
 
 def main():
     print(hashlib.algorithms_available)
-    with open(sys.argv[1]) as csv_file:
-        reader = csv.DictReader(csv_file)
-        for row in reader:
-            if os.path.exists(row["origin"]) and os.path.exists(row["new"]):
-                print(row)
-                read_size = 1024*1024
-                origin_file_sha1_ctx = hashlib.sha1
-                new_file_sha1_ctx = hashlib.sha1
-                with open(row["origin"], "rb") as file:
-                    while True:
-                        data = file.read(read_size)
-                        if not data:
-                            break
-                        origin_file_sha1_ctx.update(data)
-                with open(row["new"], "rb") as file:
-                    while True:
-                        data = file.read(read_size)
-                        if not data:
-                            break
-                        new_file_sha1_ctx.update(data)
-                origin_file_sha1 = origin_file_sha1_ctx.hexdigest()
-                new_file_sha1 = new_file_sha1_ctx.hexdigest()
-                if origin_file_sha1 == new_file_sha1:
-                    send2trash.send2trash(row["new"])
-                else:
-                    print("The files are different: {}, {}".format(
-                        row["origin"], row["new"]))
+
+    origin_file_list_file = open(sys.argv[1])
+    new_file_list_file = open(sys.argv[2])
+    
+    while True:
+        origin_file_path = origin_file_list_file.readline().strip('\r').strip('\n')
+        if not origin_file_path:
+            break
+        print(origin_file_path)
+        new_file_path = new_file_list_file.readline().strip('\r').strip('\n')
+        print(new_file_path)
+
+        if os.path.exists(origin_file_path) and os.path.exists(new_file_path):
+            read_size = 1024*1024
+            origin_file_sha1_ctx = hashlib.sha1()
+            new_file_sha1_ctx = hashlib.sha1()
+            with open(origin_file_path, "rb") as file:
+                while True:
+                    data = file.read(read_size)
+                    if not data:
+                        break
+                    origin_file_sha1_ctx.update(data)
+            with open(new_file_path, "rb") as file:
+                while True:
+                    data = file.read(read_size)
+                    if not data:
+                        break
+                    new_file_sha1_ctx.update(data)
+            origin_file_sha1 = origin_file_sha1_ctx.hexdigest()
+            new_file_sha1 = new_file_sha1_ctx.hexdigest()
+            if origin_file_sha1 == new_file_sha1:
+                send2trash.send2trash(new_file_path)
             else:
-                print("File not found: {}, {}".format(
-                    row["origin"], row["new"]))
+                print("The files are different: {}, {}".format(
+                    origin_file_path, new_file_path))
+        else:
+            print("File not found: {}, {}".format(
+                origin_file_path, new_file_path))
 
 
 if __name__ == "__main__":
