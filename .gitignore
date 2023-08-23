@@ -1,0 +1,5 @@
+debian/.debhelper/
+debian/quickutilities/
+debian/debhelper-build-stamp
+debian/files
+debian/quickutilities.substvars
