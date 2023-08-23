@@ -6,6 +6,6 @@ Build-Depends: debhelper (>= 9)
 
 Package: quickutilities
 Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends}
+Depends: ${misc:Depends}
 Description: quickutilities
  some quick utilities
