@@ -26,6 +26,7 @@ dmtf-std-update.py usr/bin
 extract-html-links.py usr/bin
 file-cmp-trash-dup.py usr/bin
 file-name-replace-string usr/bin
+git-gc usr/bin
 gitallbranch usr/bin
 gitfetchandpull usr/bin
 iconv.GBK2UTF-8 usr/bin
