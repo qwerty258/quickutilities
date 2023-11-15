@@ -1,5 +1,11 @@
-quickutilities (0.0.2) UNRELEASED; urgency=medium
+quickutilities (0.0.3) unreleased; urgency=medium
 
-  * Initial release. (Closes: #XXXXXX)
+  * add baidu-metadata-md5-check.py
 
- -- yaofei <yaofei@yaofei-debian>  Wed, 23 Aug 2023 22:15:52 +0800
+ -- yaofei <yaofei@yaofei-debian>  Wed, 15 Nov 2023 21:47:40 +0800
+
+quickutilities (0.0.2) unreleased; urgency=medium
+
+  * initial release. (closes: #xxxxxx)
+
+ -- yaofei <yaofei@yaofei-debian>  wed, 23 aug 2023 22:15:52 +0800

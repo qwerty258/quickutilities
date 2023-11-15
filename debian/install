@@ -1,4 +1,5 @@
 archive-eml usr/bin
+baidu-metadata-md5-check.py usr/bin
 batch.644.file usr/bin
 batch.755.folder usr/bin
 batch.7z2tarxz usr/bin
