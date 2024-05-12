@@ -1,3 +1,9 @@
+quickutilities (0.0.4) unreleased; urgency=medium
+
+  * gitfetchandpull add tag to fetch 
+
+ -- yaofei <yaofei@yaofei-debian>  Sun, 12 May 2024 09:20:49 +0800
+
 quickutilities (0.0.3) unreleased; urgency=medium
 
   * add baidu-metadata-md5-check.py
@@ -6,6 +12,6 @@ quickutilities (0.0.3) unreleased; urgency=medium
 
 quickutilities (0.0.2) unreleased; urgency=medium
 
-  * initial release. (closes: #xxxxxx)
+  * initial release.
 
  -- yaofei <yaofei@yaofei-debian>  wed, 23 aug 2023 22:15:52 +0800
