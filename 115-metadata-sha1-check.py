@@ -37,10 +37,12 @@ def main():
     metadata = json.load(f)
     # print(metadata["data"])
     for item in metadata["data"]:
-        print(item)
+        # print(item)
         if "sha" in item:
             if os.path.exists(item["n"]):
-                if hashlib.sha1(open(item["n"],"rb").read()).hexdigest() == item["sha"]:
+                sha1 = hashlib.sha1(open(item["n"],"rb").read()).hexdigest()
+                # print(sha1)
+                if sha1 == item["sha"].lower():
                     print("File SHA1 OK: {}".format(item["n"]))
                 else:
                     print("File SHA1 mismatch: {}".format(item["n"]))
