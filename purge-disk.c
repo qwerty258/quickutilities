@@ -30,12 +30,26 @@
 #include <unistd.h>
 #include <stdint.h>
 #include <stdbool.h>
+#include <signal.h>
 #define SECTOR_SIZE 512
 static uint8_t zero_data[SECTOR_SIZE] = {0};
 static uint8_t ff_data[SECTOR_SIZE] = {0xFF};
 static uint8_t sector[SECTOR_SIZE];
+static bool sigint = false;
+void signal_handler(int signum)
+{
+    printf("Signal %d received.\n", signum);
+    // Perform actions based on the signal
+    if (signum == SIGINT)
+    {
+        printf("Interrupted by user (Ctrl+C).\n");
+        sigint = true;
+    }
+}
 int main(int argc, char *argv[])
 {
+    signal(SIGINT, signal_handler);
+
     int fd = open("/dev/sdc", O_RDWR);
     if (0 > fd)
     {
@@ -44,6 +58,12 @@ int main(int argc, char *argv[])
     }
 
     off_t offset = 0;
+    FILE *fp = fopen("./purge-offset", "rb");
+    if (NULL != fp)
+    {
+        fread(&offset, sizeof(offset), 1, fp);
+        fclose(fp);
+    }
     lseek(fd, offset, SEEK_SET);
     ssize_t read_size = 0;
     do
@@ -55,9 +75,6 @@ int main(int argc, char *argv[])
             bool need_overwrite = false;
             for (size_t i = 0; i < SECTOR_SIZE; i++)
             {
-                printf("%02X", sector[i]);
-                if (0 == ((i + 1) % 16))
-                    printf("\n");
                 if (0 != sector[i])
                     need_overwrite = true;
             }
@@ -76,6 +93,16 @@ int main(int argc, char *argv[])
         else
         {
             printf("read offset: %ld error: %s\n", offset, strerror(errno));
+        }
+        if (sigint)
+        {
+            FILE *fp = fopen("./purge-offset", "wb");
+            if (NULL != fp)
+            {
+                fwrite(&offset, sizeof(offset), 1, fp);
+                fclose(fp);
+            }
+            break;
         }
     } while (SECTOR_SIZE == read_size);
 
