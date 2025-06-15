@@ -41,7 +41,10 @@ def main():
             filename = os.path.basename(file_metadata["path"])
             if os.path.exists(filename):
                 # print(filename)
-                if hashlib.md5(open(filename,'rb').read()).hexdigest() == file_metadata["md5"]:
+                md5sum = hashlib.md5(open(filename,'rb').read()).hexdigest()
+                # print("file md5: {}".format(md5sum))
+                # print("metadata md5: {}".format(file_metadata["md5"]))
+                if md5sum == file_metadata["md5"].lower():
                     print("File MD5 OK: {}".format(filename))
                 else:
                     print("File MD5 mismatch: {}".format(filename))
