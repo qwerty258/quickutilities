@@ -48,9 +48,15 @@ void signal_handler(int signum)
 }
 int main(int argc, char *argv[])
 {
+    if (2 != argc)
+    {
+        printf("please pass in block device, like: %s /dev/sdc", argv[0]);
+        return 0;
+    }
+
     signal(SIGINT, signal_handler);
 
-    int fd = open("/dev/sdc", O_RDWR);
+    int fd = open(argv[1], O_RDWR);
     if (0 > fd)
     {
         printf("device open error");
