@@ -1,3 +1,9 @@
+quickutilities (0.0.5) unreleased; urgency=medium
+
+  * add timestamp-from-file-name.py
+
+ -- yaofei <yaofei@yaofei-debian>  Mon, 13 Oct 2025 23:07:00 +0800
+
 quickutilities (0.0.4) unreleased; urgency=medium
 
   * gitfetchandpull add tag to fetch 

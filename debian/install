@@ -41,5 +41,6 @@ readbarcode.py usr/bin
 renamet.py usr/bin
 sha1sum.rename usr/bin
 tardir2xz usr/bin
+timestamp-from-file-name.py usr/bin
 unzipmbcs.py usr/bin
 xhtml5format usr/bin
