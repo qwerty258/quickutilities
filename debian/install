@@ -28,7 +28,6 @@ currentdir.sha1sum usr/bin
 currentdir.sha256sum usr/bin
 dmtf-std-update.py usr/bin
 extract-html-links.py usr/bin
-file-cmp-trash-dup.py usr/bin
 file-name-replace-string usr/bin
 gitallbranch usr/bin
 gitfetchandpull usr/bin
