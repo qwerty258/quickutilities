@@ -1,4 +1,5 @@
 archive-eml usr/bin
+batch-tar-permission-owner usr/bin
 batch.644.file usr/bin
 batch.755.folder usr/bin
 batch.7z2tarxz usr/bin
@@ -41,6 +42,8 @@ python-show-path.py usr/bin
 readbarcode.py usr/bin
 renamet.py usr/bin
 sha1sum.rename usr/bin
+show-kernel-alg.py usr/bin
+tar-permission-owner.py usr/bin
 tardir2xz usr/bin
 timestamp-from-file-name.py usr/bin
 unzipmbcs.py usr/bin
