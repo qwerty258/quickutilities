@@ -1,6 +1,4 @@
-115-metadata-sha1-check.py usr/bin
 archive-eml usr/bin
-baidu-metadata-md5-check.py usr/bin
 batch.644.file usr/bin
 batch.755.folder usr/bin
 batch.7z2tarxz usr/bin
@@ -21,6 +19,9 @@ batch.tar.xz.test usr/bin
 batch.torrent.rename usr/bin
 batch.zip.test usr/bin
 check.ISBN.py usr/bin
+cloud-storage-file-metadata-check-115.py usr/bin
+cloud-storage-file-metadata-check-adrive.py usr/bin
+cloud-storage-file-metadata-check-baidu.py usr/bin
 currentdir.md5sum usr/bin
 currentdir.sha1sum usr/bin
 currentdir.sha256sum usr/bin

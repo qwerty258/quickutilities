@@ -1,3 +1,9 @@
+quickutilities (0.0.6) unreleased; urgency=medium
+
+  * add "cloud-storage-file-metadata-check"
+
+ -- yaofei <yaofei@yaofei-debian>  Wed, 31 Dec 2025 14:38:23 +0800
+
 quickutilities (0.0.5) unreleased; urgency=medium
 
   * add timestamp-from-file-name.py
