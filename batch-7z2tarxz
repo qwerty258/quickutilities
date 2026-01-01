@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env sh
 
 # MIT License
 # 
@@ -23,23 +23,27 @@
 # SOFTWARE.
 
 basefilepath=$(pwd)
-for i in *.7z 
+workspace="/tmp/7z2tarxz"
+
+for i in *.7z
 do
+    mkdir -p "$workspace"
+    rm -rfv $workspace/*
     timestamp="$(stat -c %y "$i")"
-    mkdir -p "$i.tmp"
     # echo $i
     echo "extracting"
-    7z x -o"$i.tmp" "$i"
+    7z x -o"$workspace" "$i"
     filename=$(basename -- "$i")
     # echo $filename
     filename="${filename%.*}"
     # echo $filename
     echo "compressing"
-    cd "$i.tmp"
-    tar -cvJf "$filename.tar.xz" * | wc -l
-    mv "$filename.tar.xz" ..
-    cd ..
+    cd "$workspace"
+    batch-644-file
+    batch-755-folder
+    tar --owner=root --group=root -cvJf "$filename.tar.xz" *
+    cd $basefilepath
+    cp "$workspace/$filename.tar.xz" .
     touch -d "$timestamp" "$filename.tar.xz"
-    rm "$i.tmp/"*
-    rmdir "$i.tmp/"
+    tar -tvf "$filename.tar.xz"
 done
