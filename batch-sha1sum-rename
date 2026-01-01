@@ -22,7 +22,9 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-for i in *.JPG
+for i in *
 do
-    identify "$i"
+    if [ -f "$i" ]; then
+        sha1sum-rename "$i"
+    fi
 done

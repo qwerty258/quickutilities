@@ -22,7 +22,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-for i in *.txt
+for i in *.avi
 do
-    iconv.GBK2UTF-8 "$i"
+    ffprobe $i
 done
