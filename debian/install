@@ -33,7 +33,6 @@ gitallbranchpull                                usr/bin
 gitfetchandpull                                 usr/bin
 iconv-gbk2utf-8                                 usr/bin
 iconv-utf-16toutf-8                             usr/bin
-isbn.py                                         usr/bin
 jpg-exif-timestamp.py                           usr/bin
 md2docx                                         usr/bin
 old-cn-std-book-number.py                       usr/bin
