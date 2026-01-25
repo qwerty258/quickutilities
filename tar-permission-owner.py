@@ -61,13 +61,17 @@ def main():
     run_cmd(cmd=cmd_compress, current_working_dir=workspace, use_shell=True)
 
     new_file_path = os.path.join(workspace, new_file)
+    atime = os.path.getatime(sys.argv[1])
+    mtime = os.path.getmtime(sys.argv[1])
     cmd_compare = ["pkgdiff", sys.argv[1], new_file_path]
     compare_result = run_cmd(cmd_compare)
     if "UNCHANGED" in compare_result["stdout"]:
         cmd_copy_file = ["cp", new_file_path, sys.argv[1]]
         run_cmd(cmd_copy_file)
+        os.utime(sys.argv[1], (atime, mtime))
     else:
         print("Error happend in while processing {}".format(sys.argv[1]))
+        os.utime(new_file_path, (atime, mtime))
         cmd_copy_file = ["cp", new_file_path, wd_current]
         run_cmd(cmd_copy_file)
 
